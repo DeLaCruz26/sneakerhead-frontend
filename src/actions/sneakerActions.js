@@ -1,91 +1,90 @@
 // for development use:
 const BASE_URL = "http://localhost:3001";
 // for production use:
-// const BASE_URL = "https://meals-prepped-backend.herokuapp.com/";
 
 const LOADING = { type: "LOADING" };
 
-const addMeal = (meal) => {
+const addSneakers = (sneakers) => {
   console.log('g')
   return {
-      type: "ADD_MEAL",
-      meal
+      type: "ADD_SNEAKERS",
+      sneakers
   }
 }
 
-const updateMealCard = (updatedMeal) => {
+const updateSneakerCard = (updatedSneaker) => {
   console.log('g')
   return{
-    type: "UPDATE_MEAL",
-    updatedMeal
+    type: "UPDATE_SNEAKERS",
+    updatedSneaker
   }
 }
 
-const deleteMealFromMeals = (mealId) => {
+const deleteSneakersFromSneakers = (sneakersId) => {
   return {
-    type: "DELETE_MEAL",
-    mealId
+    type: "DELETE_SNEAKERS",
+    sneakersId
   }
 }
 
-export const fetchMeals = () => {
+export const fetchSneakers = () => {
 
   return (dispatch) => {
     dispatch(LOADING);
 
-    fetch(BASE_URL + "/meals")
+    fetch(BASE_URL + "/sneakers")
       .then((resp) => resp.json())
-      .then((meals) => dispatch({ type: "LOAD_MEALS", meals }));
+      .then((sneakers) => dispatch({ type: "LOAD_SNEAKERS", sneakers }));
   };
 }
 
-export const createMeal = (mealData, history) => {
+export const createSneakers = (sneakerData, history) => {
   console.log('b')
   return (dispatch) => {
     console.log('c')
-      fetch(BASE_URL + "/meals", {
+      fetch(BASE_URL + "/sneakers", {
           method: "POST",
           headers: {
               'Accept': 'application/json',
               'Content-Type': 'application/json'
           },
-          body: JSON.stringify(mealData)
+          body: JSON.stringify(sneakerData)
       })
           .then( resp => resp.json() )
-          .then( meal => {
+          .then( sneaker => {
               console.log('f')
-              dispatch(addMeal(meal));
-              history.push('/meals');
+              dispatch(addSneakers(sneaker));
+              history.push('/sneakers');
           })
         console.log('d')
   }
 }
 
-export const updateMeal = (mealId, tempMeal) => {
+export const updateSneakers = (sneakersId, tempSneaker) => {
   console.log('b')
   return (dispatch) => {
     console.log('c')
-      fetch(BASE_URL + "/meals/" + `${mealId}`, {
+      fetch(BASE_URL + "/sneakers/" + `${sneakersId}`, {
           method: "PATCH",
           headers: {
               'Accept': 'application/json',
               'Content-Type': 'application/json'
           },
-          body: JSON.stringify(tempMeal)
+          body: JSON.stringify(tempSneaker)
       })
           .then( resp => resp.json() )
-          .then( updatedMeal => {
+          .then( updatedSneaker => {
               console.log('f')
-              dispatch(updateMealCard(updatedMeal));
+              dispatch(updateSneakerCard(updatedSneaker));
           })
         console.log('d')
   }
 
 }
 
-export const deleteMeal = (mealId) => {
+export const deleteSneakers = (sneakersId) => {
   return (dispatch) => {
-      fetch(BASE_URL + '/meals/' + mealId, {
+      fetch(BASE_URL + '/sneakers/' + sneakersId, {
         method: "DELETE",
         headers: {
           "Content-Type": "application/json"
@@ -95,7 +94,7 @@ export const deleteMeal = (mealId) => {
         if (resp.error) {
           alert(resp.error)
         } else {
-          dispatch(deleteMealFromMeals(mealId))
+          dispatch(deleteSneakersFromSneakers(sneakersId))
         }
       });
   };
