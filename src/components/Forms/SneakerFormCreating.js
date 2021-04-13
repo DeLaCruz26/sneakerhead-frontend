@@ -16,7 +16,7 @@ const SneakerFormCreating = (props) => {
             category={props.category} 
             description={props.description} 
             image={props.image} 
-            vegan={props.vegan}
+            sale={props.sale}
             id={props.id}
             errors={props.errors} 
           />

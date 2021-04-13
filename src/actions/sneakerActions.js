@@ -1,5 +1,5 @@
 // for development use:
-const BASE_URL = "http://localhost:3001";
+const BASE_URL = "http://localhost:3000";
 // for production use:
 
 const LOADING = { type: "LOADING" };
@@ -33,7 +33,7 @@ export const fetchSneakers = () => {
     dispatch(LOADING);
 
     fetch(BASE_URL + "/sneakers")
-      .then((resp) => resp.json())
+      .then(resp => resp.json())
       .then((sneakers) => dispatch({ type: "LOAD_SNEAKERS", sneakers }));
   };
 }

@@ -41,7 +41,7 @@ export class SneakerCard extends Component {
                 category={this.props.category} 
                 description={this.props.description} 
                 image={this.props.imgsrc} 
-                vegan={this.props.vegan}
+                sale={this.props.sale}
                 id={this.props.id}
                 />
         </div>
@@ -60,9 +60,9 @@ export class SneakerCard extends Component {
             name={this.props.name}
             category={this.props.category}
             description={this.props.description} 
-            vegan={this.props.vegan}
-            nuts={this.props.contains_nuts}
-            dailry={this.props.contains_dairy}
+            sale={this.props.sale}
+            worn={this.props.worn}
+            neverWorn={this.props.never_worn}
             />
           <DeleteSneakerButton  deleteSneaker={this.props.deleteSneaker} id={this.props.id}/>
           {/* ok so if DeleteMeal is its own concer, why not Editing? */}

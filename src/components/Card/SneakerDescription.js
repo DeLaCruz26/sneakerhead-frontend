@@ -14,13 +14,13 @@ const SneakerDescription = (props) => {
           Description: {props.description}
         </p>
           <p className="card-text text-secondary">
-            {props.vegan ? "Vegan" : " "}
+            {props.sale ? "Sale" : " "}
           </p>
           <p className="card-text text-secondary">
-            {props.contains_nuts ? "Contains Nuts" : " "}
+            {props.worn ? "Worn" : " "}
           </p>
           <p className="card-text text-secondary">
-            {props.contains_dairy ? "Contains Dairy" : " "}
+            {props.never_worn ? "Never Worn" : " "}
           </p>
       </div>
     )

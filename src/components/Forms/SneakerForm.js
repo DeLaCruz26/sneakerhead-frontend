@@ -1,12 +1,12 @@
 import React from 'react'
 
 const SneakerForm = (props) => {
-  let vegan_message
+  let for_sale
     
-  if (props.vegan === true ){
-    vegan_message = "This is Vegan, Select to Change"
+  if (props.sale === true ){
+    for_sale = "This is For Sale, Select to Change"
   } else {
-    vegan_message = "Not Vegan, Select To Change"
+    for_sale = "Not For Sale, Select To Change"
   }
 
   return (
@@ -29,8 +29,8 @@ const SneakerForm = (props) => {
               <input type="text"  value={props.image} name="image" id="image" className="form-control" onChange={(event) => props.handleOnChange(event)} />
           </div>
           <div className="form-group form-check">
-            <input type="checkbox" value={props.vegan} className="form-check-input" name="vegan" id="vegan" onChange={(event) => props.handleOnSelect(event)} />
-            <label className="form-check-label"> {vegan_message}</label>
+            <input type="checkbox" value={props.sale} className="form-check-input" name="sale" id="sale" onChange={(event) => props.handleOnSelect(event)} />
+            <label className="form-check-label"> {for_sale}</label>
           </div>
       </div>
   

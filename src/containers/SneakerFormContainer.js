@@ -21,7 +21,7 @@ class SneakerFormContainer extends Component {
             category={this.props.category} 
             description={this.props.description} 
             image={this.props.image} 
-            vegan={this.props.vegan}
+            sale={this.props.sale}
             id={this.props.id} 
           />
           
@@ -40,7 +40,7 @@ class SneakerFormContainer extends Component {
             category={this.props.category} 
             description={this.props.description} 
             image={this.props.image} 
-            vegan={this.props.vegan} 
+            sale={this.props.sale} 
           />
         </div>
       )

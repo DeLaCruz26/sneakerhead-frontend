@@ -6,7 +6,7 @@ import { connect } from 'react-redux'
 import './App.css'
 import Footer from './components/Footer/Footer.js'
 import Home from './components/HomePage/Home.js'
-import SneakerListContainer from './containers/SneakerListContainer.js'
+import SneakersListContainer from './containers/SneakersListContainer.js'
 import SneakerFormContainer from './containers/SneakerFormContainer.js'
 import SneakerPlannerContainer from './containers/SneakerPlannerContainer.js'
 import { fetchSneakers } from './actions/sneakerActions';
@@ -24,7 +24,7 @@ class App extends Component {
           <Navbar />
           <Switch>
             <Route exact path='/'component={Home}/>
-            <Route exact path='/sneakers' component={SneakerListContainer}/>
+            <Route exact path='/sneakers' component={SneakersListContainer}/>
             <Route exact path='/sneakers/new' component={SneakerFormContainer}/>
             <Route exact path='/sneakers/planner' component={SneakerPlannerContainer}/>
           </Switch>

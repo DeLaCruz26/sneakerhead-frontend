@@ -2,9 +2,11 @@ import React, { Component } from 'react'
 import SneakerCard from '../components/Card/SneakerCard';
 import { connect } from 'react-redux'
 
+import cuid from 'cuid';
+export const cuidFn = cuid;
 
-class SneakerListContainer extends Component {
-// whos powers include an essential constant yin-yang with sneakers and sneakerFilter
+class SneakersListContainer extends Component {
+// whos powers include an essential constant yin-yang with meals and mealFilter
   constructor(props) {
     super(props)
     this.state = {
@@ -23,7 +25,7 @@ class SneakerListContainer extends Component {
   // this is functional, yes, but not DRY...
   querySneakers = () => {
     let findAlike = this.state.sneakerFilter.toLowerCase()
-    return this.props.sneakers.filter ((sneaker) => 
+    return this.props.sneakers.filter((sneaker) => 
       sneaker.name.toLowerCase().includes(findAlike) || sneaker.description.toLowerCase().includes(findAlike) || sneaker.category.toLowerCase().includes(findAlike)
     ).sort(function(a,b){return (a.id - b.id)})
   }
@@ -35,7 +37,7 @@ class SneakerListContainer extends Component {
     else {
       const sneakersList = this.querySneakers().map ((sneaker) => {
         return (
-      // many children - when editing from sneaker card, this is parent to sneaker form container, hence ability to call onEditingChange
+      // many children - when editing from meal card, this is parent to meal form container, hence ability to call onEditingChange
           <div className="col-md-4" id={sneaker.id}>
             <SneakerCard
             key={sneaker.id}
@@ -44,9 +46,9 @@ class SneakerListContainer extends Component {
             category={sneaker.category} 
             description={sneaker.description}
             imgsrc={sneaker.image}
-            vegan={sneaker.vegan}
-            contains_nuts={sneaker.contains_nuts}
-            contains_dairy={sneaker.contains_dairy}
+            sale={sneaker.sale}
+            worn={sneaker.worn}
+            never_worn={sneaker.never_worn}
             />
           </div>
         )
@@ -75,7 +77,7 @@ class SneakerListContainer extends Component {
 }
 
 const mapDispatchToProps = dispatch => ({
-  deleteSneaker: id => dispatch ({type: "DELETE_SNEAKERS", id})
+  deleteSneaker: id => dispatch ({type: "DELETE_SNEAKER", id})
 })
 
 const mapStateToProps = state => {
@@ -85,4 +87,4 @@ const mapStateToProps = state => {
   }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(SneakerListContainer);
+export default connect(mapStateToProps, mapDispatchToProps)(SneakersListContainer);

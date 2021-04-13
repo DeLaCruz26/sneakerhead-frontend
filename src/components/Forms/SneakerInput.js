@@ -13,7 +13,7 @@ export class SneakerInput extends Component {
       name: props.name || "",
       category: props.category ||"",
       description: props.description || "",
-      vegan: props.vegan || false,
+      sale: props.sale || false,
       image: props.image || "",
       errors: {}, 
       editing: props.editing || false
@@ -31,14 +31,14 @@ export class SneakerInput extends Component {
       // Yet, if there are many checkboxes, 
       // do I need to do it for each case? 
       // Yes, so I need to make this dynamic...
-      if (this.state.vegan === false) {
+      if (this.state.sale === false) {
         this.setState({
-          vegan: true
+          sale: true
       })
     } else {
         this.setState(
         {
-          vegan: false
+          sale: false
         })
       }
     }
@@ -51,11 +51,11 @@ export class SneakerInput extends Component {
         const tempState = {...this.state};
         delete tempState.errors;
         delete tempState.editing;
-        const mealData = {
-          meal: tempState
+        const sneakerData = {
+          sneaker: tempState
         };
         console.log('a')
-        this.props.createSneakers(mealData, this.props.history);
+        this.props.createSneakers(sneakerData, this.props.history);
         console.log('e')}
       };
     // these two look earily similar, thus can be refactored into one.
@@ -68,8 +68,8 @@ export class SneakerInput extends Component {
         const tempState = {...this.state};
         delete tempState.errors;
         delete tempState.editing;
-        const tempMeal = {
-          meal: tempState
+        const tempSneaker = {
+          sneaker: tempState
         };
         // onEdingChange is passed down from MealCard as Parent
         // this is double to ensure that editing is no longer true in any state anywhere in application
@@ -78,7 +78,7 @@ export class SneakerInput extends Component {
         // onUpdateSubmit basically only changes state.editing of parent (MealCard)
         // back from to false, as we are no longer editing. now its up to the servers to do their async magics...
         console.log('a')
-        this.props.updateSneakers(this.props.id, tempMeal);
+        this.props.updateSneakers(this.props.id, tempSneaker);
         console.log('e')
       }
       };
@@ -96,7 +96,7 @@ export class SneakerInput extends Component {
                 category={this.state.category} 
                 description={this.state.description} 
                 image={this.state.image} 
-                vegan={this.state.vegan}
+                sale={this.state.sale}
                 id={this.state.id}
                 errors={this.state.errors}          
               />
@@ -112,7 +112,7 @@ export class SneakerInput extends Component {
               category={this.state.category} 
               description={this.state.description} 
               image={this.state.image} 
-              vegan={this.state.vegan}
+              sale={this.state.sale}
               id={this.state.id}
               errors={this.state.errors}          
               />

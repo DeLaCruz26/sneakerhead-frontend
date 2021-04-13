@@ -17,10 +17,10 @@ const initialState = {
           return { ...state, sneakers: filteredSneakers }
         case "UPDATE_SNEAKERS":
           console.log('h')
-          console.log(action.updatedSneakers)
-          let updatedSneakers = action.updatedSneakers
-          let reFilteredSneakers = state.sneakers.filter(sneaker => sneaker.id !== updatedSneakers.id)
-          reFilteredSneakers.push(action.updatedSneakers)
+          console.log(action.updatedSneaker)
+          let updatedSneaker = action.updatedSneaker
+          let reFilteredSneakers = state.sneakers.filter(sneaker => sneaker.id !== updatedSneaker.id)
+          reFilteredSneakers.push(action.updatedSneaker)
           return { ...state, sneakers: reFilteredSneakers }
       default:
         return state;
