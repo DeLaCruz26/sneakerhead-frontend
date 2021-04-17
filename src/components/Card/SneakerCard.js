@@ -15,15 +15,11 @@ export class SneakerCard extends Component {
     }
   }
   handleEditing = () => {
-    let num = this.props.id
-    document.getElementById(num).scrollIntoView({ behavior: 'smooth' })
     this.setState ({
       editing: true
     })
   }
   handleUpdateSubmit = () => {
-    let num = this.props.id
-    document.getElementById(num).scrollIntoView({ behavior: 'smooth' })
     console.log('setting editing back to false')
     this.setState ({
       editing: false
@@ -50,9 +46,6 @@ export class SneakerCard extends Component {
     return(
       <div className='card text-center shadow'>
         <div className="overflow">
-          {/* renders image not in the meal description component
-            why do that?? in order to fine tune the visuals of the meal description component in future prod...
-          */}
           <img src={this.props.imgsrc} alt={`${this.props.name}`} className="card-img-top"/>
         </div>
         <div className="card-body text-dark">
@@ -64,8 +57,7 @@ export class SneakerCard extends Component {
             worn={this.props.worn}
             neverWorn={this.props.never_worn}
             />
-          <DeleteSneakerButton  deleteSneaker={this.props.deleteSneaker} id={this.props.id}/>
-          {/* ok so if DeleteMeal is its own concer, why not Editing? */}
+          <DeleteSneakerButton  deleteSneakers={this.props.deleteSneakers} id={this.props.id}/>
           <EditSneakerButton handleEditing={this.handleEditing}/>
         </div>
       </div>

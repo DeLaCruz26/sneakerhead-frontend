@@ -2,13 +2,12 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import App from './App';
 import { Provider } from 'react-redux';
-import rootReducer from './reducers';
 import '../node_modules/bootstrap/dist/css/bootstrap.min.css';
-import { configureStore } from '@reduxjs/toolkit'
+import { applyMiddleware, createStore } from 'redux';
+import sneakersReducer from './reducers/sneakersReducer';
+import thunk from 'redux-thunk'
 
-const store = configureStore({
-  reducer: rootReducer
-})
+const store = createStore(sneakersReducer, applyMiddleware(thunk))
 
 ReactDOM.render(
   <React.StrictMode>

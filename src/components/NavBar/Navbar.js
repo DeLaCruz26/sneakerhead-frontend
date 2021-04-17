@@ -40,11 +40,6 @@ function Navbar() {
               Add sneakers
             </NavLink>
           </li>
-          <li className='nav-item'>
-            <NavLink to='/sneakers/planner' className='nav-links' onClick={closeMobileMenu}>
-              Create sneaker planner
-            </NavLink>
-          </li>
         </ul>
       </div>
     </div>

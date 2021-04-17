@@ -1,101 +1,43 @@
-// for development use:
-const BASE_URL = "http://localhost:3000";
-// for production use:
-
-const LOADING = { type: "LOADING" };
-
-const addSneakers = (sneakers) => {
-  console.log('g')
-  return {
-      type: "ADD_SNEAKERS",
-      sneakers
-  }
+export const getSneakers = () => {
+    return dispatch => {
+        dispatch({ type: 'LOADING' })
+        fetch('http://localhost:3001/sneakers')
+        .then(resp => resp.json())
+        .then(sneakers => dispatch({ type: 'SET_SNEAKERS', sneakers }))
+    }
 }
 
-const updateSneakerCard = (updatedSneaker) => {
-  console.log('g')
-  return{
-    type: "UPDATE_SNEAKERS",
-    updatedSneaker
-  }
+export const addSneaker = (sneaker, history) => {
+    return dispatch => {
+        fetch('http://localhost:3001/sneakers', {
+            method: 'POST',
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'appilcation/json'
+            },
+            body: JSON.stringify({ sneaker })
+        })
+        .then(resp => resp.json())
+        .then(sneaker => {
+            dispatch({ type: 'ADD_SNEAKER', sneaker })
+            history.push('/sneakers')
+        })
+    }
 }
 
-const deleteSneakersFromSneakers = (sneakersId) => {
-  return {
-    type: "DELETE_SNEAKERS",
-    sneakersId
-  }
+export const deleteSneaker = (id, history) => {
+    return dispatch => {
+        fetch(`http://localhost:3001/sneakers/${id}`, {
+            method: 'DELETE',
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json'
+            },
+        })
+        .then(resp => resp.json())
+        .then(sneaker => {
+            dispatch({ type: 'DELETE_SNEAKER', sneaker })
+            history.push('/sneakers')
+        })
+    }
 }
-
-export const fetchSneakers = () => {
-
-  return (dispatch) => {
-    dispatch(LOADING);
-
-    fetch(BASE_URL + "/sneakers")
-      .then(resp => resp.json())
-      .then((sneakers) => dispatch({ type: "LOAD_SNEAKERS", sneakers }));
-  };
-}
-
-export const createSneakers = (sneakerData, history) => {
-  console.log('b')
-  return (dispatch) => {
-    console.log('c')
-      fetch(BASE_URL + "/sneakers", {
-          method: "POST",
-          headers: {
-              'Accept': 'application/json',
-              'Content-Type': 'application/json'
-          },
-          body: JSON.stringify(sneakerData)
-      })
-          .then( resp => resp.json() )
-          .then( sneaker => {
-              console.log('f')
-              dispatch(addSneakers(sneaker));
-              history.push('/sneakers');
-          })
-        console.log('d')
-  }
-}
-
-export const updateSneakers = (sneakersId, tempSneaker) => {
-  console.log('b')
-  return (dispatch) => {
-    console.log('c')
-      fetch(BASE_URL + "/sneakers/" + `${sneakersId}`, {
-          method: "PATCH",
-          headers: {
-              'Accept': 'application/json',
-              'Content-Type': 'application/json'
-          },
-          body: JSON.stringify(tempSneaker)
-      })
-          .then( resp => resp.json() )
-          .then( updatedSneaker => {
-              console.log('f')
-              dispatch(updateSneakerCard(updatedSneaker));
-          })
-        console.log('d')
-  }
-
-}
-
-export const deleteSneakers = (sneakersId) => {
-  return (dispatch) => {
-      fetch(BASE_URL + '/sneakers/' + sneakersId, {
-        method: "DELETE",
-        headers: {
-          "Content-Type": "application/json"
-        }
-      })
-      .then(resp => {
-        if (resp.error) {
-          alert(resp.error)
-        } else {
-          dispatch(deleteSneakersFromSneakers(sneakersId))
-        }
-      });
-  };
-};
