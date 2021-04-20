@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux'
-import { addSneaker } from './actions/sneakerActions'
+import { addSneaker } from '../../actions/sneakers/sneakerActions'
 
 class Form extends Component {
     state = {
@@ -50,4 +50,10 @@ class Form extends Component {
     }
 }
 
-export default connect(null, { addSneaker })(Form);
+const mapStateToProps = state => {
+    return {
+        sneakers: state.sneakers
+    }
+}
+
+export default connect(mapStateToProps, { addSneaker })(Form);

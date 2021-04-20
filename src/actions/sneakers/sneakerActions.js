@@ -1,7 +1,7 @@
 export const getSneakers = () => {
     return dispatch => {
         dispatch({ type: 'LOADING' })
-        fetch('http://localhost:3001/sneakers')
+        fetch('http://localhost:3000/sneakers')
         .then(resp => resp.json())
         .then(sneakers => dispatch({ type: 'SET_SNEAKERS', sneakers }))
     }
@@ -9,7 +9,7 @@ export const getSneakers = () => {
 
 export const addSneaker = (sneaker, history) => {
     return dispatch => {
-        fetch('http://localhost:3001/sneakers', {
+        fetch('http://localhost:3000/sneakers', {
             method: 'POST',
             headers: {
                 'Accept': 'application/json',
@@ -27,7 +27,7 @@ export const addSneaker = (sneaker, history) => {
 
 export const deleteSneaker = (id, history) => {
     return dispatch => {
-        fetch(`http://localhost:3001/sneakers/${id}`, {
+        fetch(`http://localhost:3000/sneakers/${id}`, {
             method: 'DELETE',
             headers: {
                 'Accept': 'application/json',

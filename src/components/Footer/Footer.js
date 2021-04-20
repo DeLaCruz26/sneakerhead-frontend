@@ -3,13 +3,11 @@ import './Footer.css';
 import { Link } from 'react-router-dom';
 import { FaLinkedin } from 'react-icons/fa';
 import { GiConverseShoe } from 'react-icons/gi';
-import SubscriptionInput from '.././Forms/SubscriptionInput';
 
 function Footer() {
   return (
     <div className='footer-container'>
       <section className='footer-subscription'>
-      <SubscriptionInput />
       </section>
       <div className='footer-links'>
         <div className='footer-link-wrapper'>

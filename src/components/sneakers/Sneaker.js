@@ -1,9 +1,10 @@
 import React, { Component } from 'react';
-import DeleteSneakerButton from '../Buttons/DeleteSneakerButton';
+import { connect } from 'react-redux';
+import { deleteSneaker } from '../../actions/sneakers/sneakerActions'
 
 class Sneaker extends Component {
     render() {
-        const { brand, price, description, image_link } = this.props
+        const {brand, price, description, image_link, id, history} = this.props
         return (
             <div className='card'>
                 <div className='card-body'>
@@ -13,7 +14,7 @@ class Sneaker extends Component {
                         <p>{description}</p>
                         <img alt='Sneaker' src={image_link}/>
                         <br/>
-                        <DeleteSneakerButton />
+                        <button className='button-color' onClick={() => deleteSneaker(id, history)}>Delete</button>
                     </div>
                 </div>
             </div>
@@ -21,4 +22,4 @@ class Sneaker extends Component {
     }
 }
 
-export default Sneaker;
+export default connect(null, {deleteSneaker})(Sneaker);

@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
-import { getSneakers } from './actions/sneakerActions'
+import { getSneakers } from './actions/sneakers/sneakerActions'
 import { connect } from 'react-redux'
 import 'bootstrap/dist/css/bootstrap.min.css'
 import './App.css'

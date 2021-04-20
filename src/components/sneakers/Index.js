@@ -14,6 +14,7 @@ class Index extends Component {
 }
 
 const mapStateToProps = state => {
+    console.log(state);
     return {
         sneakers: state.sneakers
     }
