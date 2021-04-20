@@ -13,7 +13,7 @@ export const addSneaker = (sneaker, history) => {
             method: 'POST',
             headers: {
                 'Accept': 'application/json',
-                'Content-Type': 'appilcation/json'
+                'Content-Type': 'application/json'
             },
             body: JSON.stringify({ sneaker })
         })
@@ -32,7 +32,7 @@ export const deleteSneaker = (id, history) => {
             headers: {
                 'Accept': 'application/json',
                 'Content-Type': 'application/json'
-            },
+            }
         })
         .then(resp => resp.json())
         .then(sneaker => {
