@@ -39,5 +39,6 @@ export const deleteSneaker = (id, history) => {
             dispatch({ type: 'DELETE_SNEAKER', sneaker })
             history.push('/sneakers')
         })
+      window.location.reload()  
     }
 }

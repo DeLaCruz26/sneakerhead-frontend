@@ -3,6 +3,7 @@ import './Footer.css';
 import { Link } from 'react-router-dom';
 import { FaLinkedin } from 'react-icons/fa';
 import { GiConverseShoe } from 'react-icons/gi';
+import { GoMarkGithub } from 'react-icons/go'
 
 function Footer() {
   return (
@@ -35,6 +36,9 @@ function Footer() {
           <div className='social-icons'>
             <a className='social-icon-link' target="_blank" rel="noopener noreferrer" href='https://www.linkedin.com/in/dametrik-fick-34971913a/' aria-label='LinkedIn'>
               <FaLinkedin />
+            </a>
+            <a className='social-icon-link' target="_blank" rel="noopener noreferrer" href='https://github.com/DeLaCruz26' aria-label='Github'>
+              <GoMarkGithub />
             </a>
           </div>
         </div>

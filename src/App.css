@@ -8,3 +8,8 @@
 .form-container {
   margin-bottom: 5rem;
 }
+
+.container-fluid .row {
+  padding-top: 4rem;
+  padding-bottom: 4rem;
+}

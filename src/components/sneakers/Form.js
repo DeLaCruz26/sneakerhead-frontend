@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux'
-import { addSneaker } from '../../actions/sneakers/sneakerActions'
+import { addSneaker } from '../../actions/sneakerActions'
 
 class Form extends Component {
     state = {
